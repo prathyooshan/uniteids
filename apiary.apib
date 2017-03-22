@@ -1,0 +1,59 @@
+FORMAT: 1A
+HOST: http://uniteids.apiblueprint.org/
+
+# uniteids
+
+Uniteids is a simple API allowing consumers to activate uniteid accounts
+
+## Uniteids Collection [/uniteids]
+
+### Activate Uniteid accounts [PUT]
+
+You may activate the account using this request. It takes a JSON
+object containing multiple uniteids and another field called activate. 
+Currently, activate only takes the value Y.
+
++ Request (application/json)
+
+        [
+            {
+            "uniteid": "SSO_USER_1",
+            "activate": "Y"
+            },
+            {
+            "uniteid": "SSO_USER_2",
+            "activate": "Y"
+            },
+            {
+            "uniteid": "PRATSREE",
+            "activate": "Y"
+            },
+            {
+            "uniteid": "SPARTACUS",
+            "activate": "Y"
+            }
+        ]
+
++ Response 200 (application/json)
+
+
+    + Body
+
+            [
+            {
+            "uniteid": "SSO_USER_1",
+            "statusmessage": "Uniteid successfully activated"
+            },
+            {
+            "uniteid": "SSO_USER_2",
+            "statusmessage": "Uniteid is already active since 30/10/2015"
+            },
+            {
+            "uniteid": "PRATSREE",
+            "statusmessage": "Uniteid does not exist in the system"
+            },
+            {
+            "uniteid": "SPARTACUS",
+            "statusmessage": "Email address associated to unitedid already in use"
+            }
+            ]
